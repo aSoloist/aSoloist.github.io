@@ -1,0 +1,1280 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tomcat," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
+<meta name="keywords" content="Tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tomcat 配置文件详解">
+<meta property="og:url" content="http://www.soloist.top/2018/04/03/Tomcat 配置文件详解/index.html">
+<meta property="og:site_name" content="I&#39;m ly">
+<meta property="og:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owek6x58j.bkt.clouddn.com/078%257WA%7B%29Q%7BH%5DAZJ6LN_G0K.png">
+<meta property="og:updated_time" content="2018-04-03T18:56:36.394Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tomcat 配置文件详解">
+<meta name="twitter:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
+<meta name="twitter:image" content="http://owek6x58j.bkt.clouddn.com/078%257WA%7B%29Q%7BH%5DAZJ6LN_G0K.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.soloist.top/2018/04/03/Tomcat 配置文件详解/"/>
+
+
+
+
+
+  <title>Tomcat 配置文件详解 | I'm ly</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">I'm ly</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.soloist.top/2018/04/03/Tomcat 配置文件详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Soloist">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="I'm ly">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tomcat 配置文件详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T19:03:00+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。</p>
+<p>故搜索一些server.xml配置文件的详解，留以备用。</p>
+<h2 id="tomcat-自带的-server-xml-文件"><a href="#tomcat-自带的-server-xml-文件" class="headerlink" title="tomcat 自带的 server.xml 文件"></a>tomcat 自带的 server.xml 文件</h2><p>server.xml 位于 Tomcat 的 conf 目录下，下面是 tomcat 自带的 server.xml 文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JasperListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span></span></div><div class="line">              <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span></div><div class="line">              <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span></div><div class="line">              <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span></div><div class="line">              <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</div><div class="line">  <span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></div><div class="line"> </div><div class="line">  <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span></span></div><div class="line">               <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span></div><div class="line">               <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span></div><div class="line">               <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</div><div class="line">      <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></div><div class="line"> </div><div class="line">      <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span>  <span class="attr">appBase</span>=<span class="string">"WEBapps"</span></span></div><div class="line">            <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span></span></div><div class="line">               <span class="attr">prefix</span>=<span class="string">"localhost_access_log."</span> <span class="attr">suffix</span>=<span class="string">".txt"</span></div><div class="line">               <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</div><div class="line">      <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h2><p>整体结构如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Server</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Service</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Connector</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Connector</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Engine</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">Host</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">Context</span> /&gt;</span><span class="comment">&lt;!-- 现在常常使用自动部署，不推荐配置Context元素，Context小节有详细说明 --&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="元素分类"><a href="#元素分类" class="headerlink" title="元素分类"></a>元素分类</h2><p>server.xml 文件中的元素可大致分为四类：</p>
+<ul>
+<li>顶层元素: <code>&lt;Server&gt;</code> 和 <code>&lt;Service&gt;</code></li>
+</ul>
+<p>其中 Server 元素是整个配置文件的根元素， Service 元素则代表一个 Engine 元素和一组与之相连的 Connector 元素。</p>
+<ul>
+<li>连接器: <code>&lt;Connector&gt;</code></li>
+</ul>
+<p>Connector 元素代表了外部客户端发送请求到特定 Service 的接口；同时也是外部客户端从特定 Service 接收响应的接口</p>
+<ul>
+<li>容器: <code>&lt;Engine&gt;&lt;Host&gt;&lt;Context&gt;</code></li>
+</ul>
+<p>容器的作用是处理 Connector 接收进来的请求，并产生相应的响应。 Engine 、 Host 、 Context 都是容器，但他们是父子关系： Engine 包含 Host ， Host 包含 Context 。一个 Engine 组件可以处理 Service 中所有的请求，一个 Host 组件可以处理发向特定虚拟主机的所有请求， 一个 Context 组件可以处理一个特定的 WEB 应用的所有请求。</p>
+<ul>
+<li>内嵌组件: 可以内嵌到容器中的组件。其实， Server 、 Service 、 Connector 、 Engine 、 Host 和 Context 是最重要的最核心的 Tomcat 组件，其他组件都可以归为内嵌组件。</li>
+</ul>
+<h2 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h2><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>Server 元素在最顶层，代表整个 Tomcat 容器，因此他必须是 server.xml 中唯一一个最外层元素。一个 Server 元素中可以有一个或多个 Service 元素。</p>
+<p>在自带的 server.xml 文件中，最外层有一个 Server 元素， shutdown 属性表示关闭 Server 的指令； port 属性表示 Server 接收 shutdown 指令的端口，设置为 -1 可以禁掉该端口。可选属性： className ，值需要是实现了org.apache.catalina.Server接口的类名，标准实现类是org.apache.catalina.core.StandardServer类。</p>
+<p>Server 的主要任务，就是提供一个接口让客户端能够访问到这个 Service 集合，同时维护他所包含的所有 Service 的生命周期，包括如何初始化、如何结束服务、如何找到客户端要访问的 Service 。</p>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><p>Service 元素的作用是在 Connector 和 Engine 外面包一层，将他们组装在一起，对外提供服务。一个 Service 可以包含多个 Connector ，但是只能包含一个 Engine ；其中 Connector 的作用是接收客户端请求， Engine 的作用是处理接收进来的请求。</p>
+<p>在自带的 server.xml 文件中， Server 中包含一个名称为 “Catalina” 的 Service 。实际上， Tomcat 可以提供多个 Service ，不同的 Service 监听不同的端口。</p>
+<h3 id="Connector"><a href="#Connector" class="headerlink" title="Connector"></a>Connector</h3><p>Connector 元素的主要功能是接收连接的请求，创建 Request 和 Response 对象用于和请求端交换数据；然后分配线程让 Engine 来处理这个请求，并把产生的 Request 和 Response 对象传给 Engine 。</p>
+<p>通过配置 Connector ，可以控制请求 Service 的协议和端口。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>在自带的 server.xml 文件中， Service 包含两个 Connector ：</p>
+<ol>
+<li><p>通过配置第一个 Connector ，客户端可以通过8080端口使用http协议访问 Tomcat ，其中， protocol 属性规定了请求的协议， port 属性规定了请求的端口号， redirectPort 属性表示当强制要求https而请求是http时，重定向至端口号为8443的 Connector ， connectionTimeout 属性表示连接的超时时间。</p>
+</li>
+<li><p>通过配置第二个 Connector ，客户端可以通过8009端口使用AJP协议访问Tomcat，AJP协议负责和其他的HTTP服务器（如Apache）建立连接；在把 Tomcat 与其他HTTP服务器集成时，就需要用到这个连接器。之所以用 Tomcat 和其他服务器集成，是因为 Tomcat 可以用作 Servlet/JSP 容器，但是对静态资源的处理速度较慢，不如 Apache 和 IIS 等HTTP服务器；因此常常将 Tomcat 与 Apache 等集成，前者作为 Servlet 容器，后者处理静态资源，而AJP协议便负责 Tomcat 和 Apache 的连接， Tomcat 和 Apache 等集成的原理如下图：</p>
+</li>
+</ol>
+<p><img src="http://owek6x58j.bkt.clouddn.com/078%257WA%7B%29Q%7BH%5DAZJ6LN_G0K.png" alt="tomcat-apache">;</p>
+<h3 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h3><p>Engine 元素在 Service 中有且只有一个； Engine 是 Service 组件中的请求处理组件。 Engine 组件从一个或多个 Connector 中接收请求并处理，并将完成的响应返回给 Connector ，最终传递给客户端。</p>
+<p><code>&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot;&gt;</code></p>
+<p>上面的配置语句，其中name属性用于日志和错误信息，在整个 Service 中应该唯一。 defaultHost 属性指定了默认的 host 名称，当发生本机的请求指定的 host 名称不存在时，一律使用 defaultHost 指定的 host 进行处理；因此， defaultHost 的值必须与 Engine 的一个 Host 组件的name属性值匹配。</p>
+<h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><h4 id="Engine-和-Host"><a href="#Engine-和-Host" class="headerlink" title="Engine 和 Host"></a>Engine 和 Host</h4><p>Host 是 Engine 的子容器， Engine 组件中可以内嵌一个或多个 Host 组件，每个 Host 组件代表 Engine 中的一个虚拟主机。 Host 组件至少有一个，且其中一个的 name 必须与 Engine 组件的 defaultHost 属性相匹配。</p>
+<h4 id="Host-的作用"><a href="#Host-的作用" class="headerlink" title="Host 的作用"></a>Host 的作用</h4><p>Host 虚拟主机的作用，是运行多个WEB应用（一个 Context 代表一个 WEB 应用），并负责安装、展开和结束每个 WEB 应用。</p>
+<p>Host 组件代表的虚拟主机，对应了服务器中一个网络名实体（如”www.soloist.top”,或IP地址”114.114.114.114”）；为了使用户可以通过网络名连接 Tomcat 服务器，这个名字应该在 DNS 服务器上注册。</p>
+<p>客户端通常使用主机名来标识他们希望连接的主机；该主机名也会包含在HTTP请求头中。 Tomcat 从 HTTP 头中提取出主机名，寻找名称匹配的主机。如果没有主机匹配，请求将发送至默认主机（localhost）。因此默认主机不需要是在 DNS 服务器中注册的网络名，因为任何与所有 Host 名不匹配的请求，都会路由至默认主机。</p>
+<h4 id="Host-的配置"><a href="#Host-的配置" class="headerlink" title="Host 的配置"></a>Host 的配置</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span> <span class="attr">appBase</span>=<span class="string">"WEBapps"</span> <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上面的配置项中，name属性指定虚拟主机的主机名，一个 Engine 中有且仅有一个 Host 组件的 name 属性与 Engine 组件的 defaultHost 属性相匹配；一般情况下，主机名需要是在 DNS 服务器中注册的网络名，但是 Engine 指定的 defaultHost 不需要。</p>
+<p>unpackWARs 属性指定了是否将代表 WEB 应用的 WAR 文件解压；如果为 true ，通过解压后的文件结构运行该 WEB 应用，如果为 false ，直接使用 WAR 文件运行 WEB 应用。</p>
+<p>Host 中的 autoDeploy 属性与配置中未出现的 xmlBase 和 deployOnStartup 属性，都与 WEB 应用中的自动部署有关，将在 Context 中介绍。</p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><h4 id="Context-的作用"><a href="#Context-的作用" class="headerlink" title="Context 的作用"></a>Context 的作用</h4><p>Context 元素代表在特定虚拟主机上运行的一个 WEB 应用。在后文中，提到的 Context 、 应用或 WEB 应用，都指代的是 WEB 应用。每个 WEB 应用基于 WAR 文件，或 WAR 文件解压后对应的目录（称为应用目录）。</p>
+<p>Context 是 Host 的子容器，每个 Host 中可以定义任意多的 Context 元素。</p>
+<p>在自带的 server.xml 文件中，我们可以发现并没有 Context 元素的配置，因为 Tomcat 开启了自动部署， WEB 应用没有在配置文件中静态部署，而是由 Tomcat 通过特定的规则自动部署。</p>
+<h4 id="WEB-应用自动部署"><a href="#WEB-应用自动部署" class="headerlink" title="WEB 应用自动部署"></a>WEB 应用自动部署</h4><p><strong>Host 的配置</strong></p>
+<p>要开启自动部署，需要配置所在的虚拟主机；配置的方式就是前面提到的 deployOnStartup 和 autoDeploy 属性。如果 deployOnStartup 和 autoDeploy 设置为 true ，则 Tomcat 启动自动部署；当检测到新的 WEB 应用或 WEB 应用的更新时，会触发应用的部署（或重新部署）。二者的主要区别在于， deployOnStartup 为 true 时， Tomcat 在启动时检查 WEB 应用，且检测到所有的 WEB 应用视作新应用； autoDeploy 为 true 时， Tomcat 在运行时定期检查新的 WEB 应用或 WEB 应用的更新。除此之外，二者的处理相似。</p>
+<p>通过配置 deployOnStartup 和 autoDeploy 可以开启虚拟主机自动部署 WEB 应用；实际上，自动部署依赖于检查是否有新的或更改过的 WEB 应用。而 Host 元素的 appBase 和 xmlBase 设置了检查 WEB 应用更新的目录。</p>
+<p>其中， appBase 属性指定 WEB 应用所在的目录，默认值是 WEBapps ，这是一个相对路径，代表 Tomcat 根目录下的 WEBapps 文件夹。</p>
+<p>xmlBase 属性指定 WEB 应用的 xml 配置文件所在的目录，默认值是 conf/<engine_name>/<host_name>，例如在自带文件中，主机 localhost 的 xmlBase 默认值为 Tomcat 根目录下 conf/Catalina/localhost。</host_name></engine_name></p>
+<p><strong>检查 WEB 应用更新</strong></p>
+<p>一个WEB应用可能包含以下文件：xml配置文件，WAR包，以及一个应用目录（该目录包含WEB应用的文件结构）；其中xml配置文件位于xmlBase指定的目录，WAR包和应用目录位于appBase指定的目录。</p>
+<p>Tomcat 按如下的顺序进行扫描，检查应用更新。</p>
+<ol>
+<li><p>扫描虚拟主机指定的xmlBase下的xml配置文件。</p>
+</li>
+<li><p>扫描虚拟主机指定的appBase下的WAR文件。</p>
+</li>
+<li><p>扫描虚拟主机指定的appBase下的应用目录。</p>
+</li>
+</ol>
+<p><strong>\<context>元素的配置</context></strong></p>
+<p>Context 元素最重要的属性是 docBase 和 path ，此外 reloadable 属性也比较常用。</p>
+<p>docBase 指定了该 WEB 应用使用的 WAR 包路径，或应用目录，需要注意的是，在自动部署场景下（配置文件位于xmlBase中），docBase不在appBase目录中，才需要指定；如果 docBase 指定的 WAR 包或应用目录就在 appBase 中，则不需要指定，因为 Tomcat 会自动扫描appBase中的WAR包和应用目录，指定了反而会造成问题。</p>
+<p>path 指定了访问该 WEB 应用的上下文路径，当请求到来时， Tomcat 根据 WEB 应用的 path 属性与 URI 的匹配程度来选择 WEB 应用处理相应请求。例如， WEB 应用 app1 的 path 属性是 “/app1”， WEB 应用 app2 的 path 属性是 “/app2”，那么请求/app/index.html会交给app1来处理，而请求/app2/index.html会交给app2来处理。如果一个Context元素的path属性为””，那么这个Context是虚拟主机的默认WEB应用；当请求的url与所有的path都不匹配时，使用该默认WEB应用来处理。</p>
+<p>需要注意的是，在自动部署场景下（配置文件位于xmlBase中），不能指定path属性，path属性由配置文件的文件名、WAR文件的文件名或应用目录的文件名称自动推导出来。如扫描WEB应用时，发现了xmlBase目录下的app1.xml，或appBase目录下的app1.WAR或app1应用目录，则该WEB应用的path属性是”app1”，如果名称是ROOT，则该WEB应用是虚拟主机默认的WEB应用，此时path属性推导为””。</p>
+<p>reloadable属性指示Tomcat是否在运行时监控在WEB-INF/classes和WEB-INF/lib目录下的class文件的改动。如果为true，则当class文件改动时，会触发WEB应用的重新加载。在开发环境下，reloadable设置为true便于测试，但是在生产环境中设置为true会给服务器性能带来压力，因此默认值为false。</p>
+<p><strong>自动部署举例</strong></p>
+<p>最典型的自动部署，就是当我们安装完Tomcat后，WEBapps目录下有如下文件夹：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- docs</div><div class="line">- example</div><div class="line">- host-manager</div><div class="line">- manager</div><div class="line">- ROOT</div></pre></td></tr></table></figure>
+<p>当我们启动Tomcat后，可以使用<a href="http://localhost:8080/来访问Tomcat，其实访问的就是ROOT对应的WEB应用；我们也可以通过http://localhost:8080/docs来访问docs应用，其他同理。" target="_blank" rel="external">http://localhost:8080/来访问Tomcat，其实访问的就是ROOT对应的WEB应用；我们也可以通过http://localhost:8080/docs来访问docs应用，其他同理。</a></p>
+<h4 id="server-xml中静态部署WEB应用"><a href="#server-xml中静态部署WEB应用" class="headerlink" title="server.xml中静态部署WEB应用"></a>server.xml中静态部署WEB应用</h4><p>除了自动部署，我们也可以在server，xml中通过<context>元素静态部署WEB应用。静态部署和动态部署是可以共存的，在实际应用中，并不推荐使用静态部署，因为server.xml是不可动态加载的资源，服务器一旦启动了以后，要修改这个文件，只有重启服务器才能加载。而自动部署可以在Tomcat运行时通过定期的扫描来实现，不需要重启服务器。</context></p>
+<p>server.xml中使用Context元素配置WEB应用，Context元素应该位于Host元素中</p>
+<p>docBase：静态部署时，docBase可以在appBase目录下，也可以不在。</p>
+<p>path：静态部署时，可以显式指定path属性，但是仍然受到了严格的限制：只有当自动部署完全关闭(deployOnStartup和autoDeploy都为false)或docBase不在appBase中时，才可以设置path属性。在本例中，docBase不在appBase中，因此path属性可以设置。</p>
+<p>reloadable属性的用法与自动部署时相同。</p>
+<h2 id="核心组件的关联"><a href="#核心组件的关联" class="headerlink" title="核心组件的关联"></a>核心组件的关联</h2><h3 id="整体关系"><a href="#整体关系" class="headerlink" title="整体关系"></a>整体关系</h3><p>核心组件的整体关系，可以总结如下：</p>
+<p>Server元素在最顶层，代表整个Tomcat容器；一个Server元素中可以有一个或多个Service元素。</p>
+<p>Service在Connector和Engine外面包了一层，把它们组装在一起，对外提供服务。一个Service可以包含多个Connector，但是只能包含一个Engine；Connector接收请求，Engine处理请求。</p>
+<p>Engine、Host和Context都是容器，且 Engine包含Host，Host包含Context。每个Host组件代表Engine中的一个虚拟主机；每个Context组件代表在特定Host上运行的一个WEB应用。</p>
+<h3 id="如何确定请求由谁处理？"><a href="#如何确定请求由谁处理？" class="headerlink" title="如何确定请求由谁处理？"></a>如何确定请求由谁处理？</h3><h4 id="根据协议和端口号选定Service和Engine"><a href="#根据协议和端口号选定Service和Engine" class="headerlink" title="根据协议和端口号选定Service和Engine"></a>根据协议和端口号选定Service和Engine</h4><p>Service中的Connector组件可以接收特定端口的请求。因此，当Tomcat启动时，Service组件便会监听特定端口，在上面的配置文件中，Catalina这个Service监听了基于HTTP协议的8080端口和基于AJP协议的8009端口。当请求进来时，Tomcat便可以根据协议和端口号选定处理请求的Service；Service一旦被选定，Engine也就确定了。</p>
+<p><strong>通过在Server中配置多个Service，可以实现通过不同的端口号来访问同一台机器上的不同应用。</strong></p>
+<h4 id="根据域名或IP地址选定Host"><a href="#根据域名或IP地址选定Host" class="headerlink" title="根据域名或IP地址选定Host"></a>根据域名或IP地址选定Host</h4><p>Service确定后，Tomcat在Service中寻找名称与域名/IP地址匹配的Host处理该请求，如果没有找到，则使用Engine中指定defaultHost来处理该请求。因为上面的配置文件只有一个Host，因此该Service/Engine的所有请求都交给该Host处理。</p>
+<h4 id="根据URI选定Context-WEB应用"><a href="#根据URI选定Context-WEB应用" class="headerlink" title="根据URI选定Context/WEB应用"></a>根据URI选定Context/WEB应用</h4><p>这点在Context中有介绍。</p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p>以请求<a href="http://localhost:8080/examples/index.html为例，首先通过协议和端口号（HTTP和8080）选定Service，然后通过主机名（localhost）选定Host，然后通过URI（/examples/index.html）选定WEB应用" target="_blank" rel="external">http://localhost:8080/examples/index.html为例，首先通过协议和端口号（HTTP和8080）选定Service，然后通过主机名（localhost）选定Host，然后通过URI（/examples/index.html）选定WEB应用</a></p>
+<h3 id="如何配置多个服务？"><a href="#如何配置多个服务？" class="headerlink" title="如何配置多个服务？"></a>如何配置多个服务？</h3><p>通过在Server中配置多个Service服务，可以实现通过不同的端口号来访问同一台机器上部署的不同应用。</p>
+<p>在server.xml中配置多服务的方法很简单：</p>
+<ol>
+<li><p>复制\<service>，放在当前\<service>后面。</service></service></p>
+</li>
+<li><p>修改端口号：根据需要监听的端口号修改\<connector>元素的port属性，必须保证该端口没有被其他进程占用，否则将会出错。</connector></p>
+</li>
+<li><p>修改Service和Engine的name属性</p>
+</li>
+<li><p>修改Host的appBase属性（如WEBapps2）</p>
+</li>
+<li><p>WEB应用仍然使用自动部署</p>
+</li>
+<li><p>将要部署的WEB应用（WAR包或应用目录）拷贝到新的appBase目录下。</p>
+</li>
+</ol>
+<p>以上面的配置文件为例，可以这样配置多服务：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version='1.0' encoding='utf-8'?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JasperListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span> <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span> <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span> <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span> <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span></div><div class="line">               <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</div><div class="line">      <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span>  <span class="attr">appBase</span>=<span class="string">"/opt/project/WEBapps"</span> <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span> <span class="attr">prefix</span>=<span class="string">"localhost_access_log."</span> <span class="attr">suffix</span>=<span class="string">".txt"</span> <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina2"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8084"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8010"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina2"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span></div><div class="line">               <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</div><div class="line">      <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span>  <span class="attr">appBase</span>=<span class="string">"/opt/project/WEBapps2"</span> <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span> <span class="attr">prefix</span>=<span class="string">"localhost_access_log."</span> <span class="attr">suffix</span>=<span class="string">".txt"</span> <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>再将原WEBapps下的docs目录拷贝到WEBapps2中，则通过如下两个接口都可以访问docs应用：</p>
+<p><a href="http://localhost:8080/docs/" target="_blank" rel="external">http://localhost:8080/docs/</a></p>
+<p><a href="http://localhost:8084/docs/" target="_blank" rel="external">http://localhost:8084/docs/</a></p>
+<h2 id="其他组件"><a href="#其他组件" class="headerlink" title="其他组件"></a>其他组件</h2><p>除核心组件外，server.xml中还可以配置很多其他组件，具体可以查看<a href="http://tomcat.apache.org/tomcat-8.0-doc/config/index.html" target="_blank" rel="external">Tomcat官方文档</a></p>
+<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JasperListener"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>Listener(即监听器)定义的组件，可以在特定事件发生时执行特定的操作；被监听的事件通常是Tomcat的启动和停止。</p>
+<p>监听器可以在Server、Engine、Host或Context中，上面配置的的监听器都是在Server中。实际上，本例中定义的6个监听器，都只能存在于Server组件中。监听器不允许内嵌其他组件。</p>
+<p>监听器需要配置的最重要的属性是className，该属性规定了监听器的具体实现类，该类必须实现了org.apache.catalina.LifecycleListener接口。</p>
+<p>下面依次介绍配置文件中配置的监听器：</p>
+<ul>
+<li><p>VersionLoggerListener：当Tomcat启动时，该监听器记录Tomcat、Java和操作系统的信息。该监听器必须是配置的第一个监听器。</p>
+</li>
+<li><p>AprLifecycleListener：Tomcat启动时，检查APR库，如果存在则加载。APR，即Apache Portable Runtime，是Apache可移植运行库，可以实现高可扩展性、高性能，以及与本地服务器技术更好的集成。</p>
+</li>
+<li><p>JasperListener：在WEB应用启动之前初始化Jasper，Jasper是JSP引擎，把JVM不认识的JSP文件解析成java文件，然后编译成class文件供JVM使用。</p>
+</li>
+<li><p>JreMemoryLeakPreventionListener：与类加载器导致的内存泄露有关。</p>
+</li>
+<li><p>GlobalResourcesLifecycleListener：通过该监听器，初始化\<globalnamingresources>标签中定义的全局JNDI资源；如果没有该监听器，任何全局资源都不能使用。</globalnamingresources></p>
+</li>
+<li><p>ThreadLocalLeakPreventionListener：当WEB应用因thread-local导致的内存泄露而要停止时，该监听器会触发线程池中线程的更新。当线程执行完任务被收回线程池时，活跃线程会一个一个的更新。只有当WEB应用(即Context元素)的renewThreadsWhenStoppingContext属性设置为true时，该监听器才有效。</p>
+</li>
+</ul>
+<h3 id="GlobalNamingResources与Realm"><a href="#GlobalNamingResources与Realm" class="headerlink" title="GlobalNamingResources与Realm"></a>GlobalNamingResources与Realm</h3><p>上面的配置文件中，Engine组件下定义了Realm组件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span> <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Realm，可以把它理解成“域”；Realm提供了一种用户密码与WEB应用的映射关系，从而达到角色安全管理的作用。在本例中，Realm的配置使用name为UserDatabase的资源实现。而该资源在Server元素中使用GlobalNamingResources配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span> <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span> <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span></span></div><div class="line">              <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span> <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>GlobalNamingResources元素定义了全局资源，通过配置可以看出，该配置是通过读取/conf/tomcat-users.xml实现的。</p>
+<h3 id="Valve"><a href="#Valve" class="headerlink" title="Valve"></a>Valve</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span> <span class="attr">prefix</span>=<span class="string">"localhost_access_log."</span> <span class="attr">suffix</span>=<span class="string">".txt"</span> <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>单词Valve的意思是“阀门”，在Tomcat中代表了请求处理流水线上的一个组件，Valve可以与Tomcat的容器（Engine、Host或Context）关联。</p>
+<p>不同的Valve有不同的特性，下面介绍一下上面出现的AccessLogValve。</p>
+<p>AccessLogValve的作用是通过日志记录其所在容器中处理的所有请求，上面的配置文件中，Valve放在Host下，便可以记录该Host处理的所有请求。AssessLogValve记录的日志就是访问日志，每天的请求会写到一个日志文件里。</p>
+<p>上面AssessLogValve属性的配置，使用的是默认配置。AssessLogValve中各个属性的作用如下：</p>
+<ol>
+<li><p>className:规定了Valve的类型，是最重要的属性</p>
+</li>
+<li><p>directory:指定日志存储的位置</p>
+</li>
+<li><p>prefix:指定日志文件的前缀</p>
+</li>
+<li><p>suffix:指定日志文件的后缀</p>
+</li>
+<li><p>pattern:指定记录日志的格式，上面各项含义如下：</p>
+<ul>
+<li><p>%h:远程主机名或IP地址，如果有nginx等反向代理服务器进行请求分发，该主机名/IP地址代表的是nginx，否则代表的是客户端。</p>
+</li>
+<li><p>%l:远程逻辑用户名，一律是”-“，可以忽略</p>
+</li>
+<li><p>%u:授权的远程用户名，如果没有，则是”-“</p>
+</li>
+<li><p>%t:访问的时间</p>
+</li>
+<li><p>%r:请求的第一行，即请求的方法（get/post），url，及协议</p>
+</li>
+<li><p>%s:响应的状态，200、404等</p>
+</li>
+<li><p>%b:响应的数据量，不包括请求头，如果是0，则是”-“</p>
+</li>
+<li><p>除此之外，还有一个常用选项是%D，含义是请求处理的时间（单位是毫秒）</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tomcat/" rel="tag"># Tomcat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/28/排序算法汇总/" rel="next" title="排序算法汇总">
+                <i class="fa fa-chevron-left"></i> 排序算法汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Soloist" />
+          <p class="site-author-name" itemprop="name">Soloist</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个鶸的成长史</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/aSoloist" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.epclub.xin/" title="文卡的个人微博" target="_blank">文卡的个人微博</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat-自带的-server-xml-文件"><span class="nav-number">2.</span> <span class="nav-text">tomcat 自带的 server.xml 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体结构"><span class="nav-number">3.</span> <span class="nav-text">整体结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素分类"><span class="nav-number">4.</span> <span class="nav-text">元素分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心组件"><span class="nav-number">5.</span> <span class="nav-text">核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server"><span class="nav-number">5.1.</span> <span class="nav-text">Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service"><span class="nav-number">5.2.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connector"><span class="nav-number">5.3.</span> <span class="nav-text">Connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Engine"><span class="nav-number">5.4.</span> <span class="nav-text">Engine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Host"><span class="nav-number">5.5.</span> <span class="nav-text">Host</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Engine-和-Host"><span class="nav-number">5.5.1.</span> <span class="nav-text">Engine 和 Host</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Host-的作用"><span class="nav-number">5.5.2.</span> <span class="nav-text">Host 的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Host-的配置"><span class="nav-number">5.5.3.</span> <span class="nav-text">Host 的配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Context"><span class="nav-number">5.6.</span> <span class="nav-text">Context</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Context-的作用"><span class="nav-number">5.6.1.</span> <span class="nav-text">Context 的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WEB-应用自动部署"><span class="nav-number">5.6.2.</span> <span class="nav-text">WEB 应用自动部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#server-xml中静态部署WEB应用"><span class="nav-number">5.6.3.</span> <span class="nav-text">server.xml中静态部署WEB应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心组件的关联"><span class="nav-number">6.</span> <span class="nav-text">核心组件的关联</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体关系"><span class="nav-number">6.1.</span> <span class="nav-text">整体关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何确定请求由谁处理？"><span class="nav-number">6.2.</span> <span class="nav-text">如何确定请求由谁处理？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#根据协议和端口号选定Service和Engine"><span class="nav-number">6.2.1.</span> <span class="nav-text">根据协议和端口号选定Service和Engine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据域名或IP地址选定Host"><span class="nav-number">6.2.2.</span> <span class="nav-text">根据域名或IP地址选定Host</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据URI选定Context-WEB应用"><span class="nav-number">6.2.3.</span> <span class="nav-text">根据URI选定Context/WEB应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举例"><span class="nav-number">6.2.4.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何配置多个服务？"><span class="nav-number">6.3.</span> <span class="nav-text">如何配置多个服务？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他组件"><span class="nav-number">7.</span> <span class="nav-text">其他组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Listener"><span class="nav-number">7.1.</span> <span class="nav-text">Listener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GlobalNamingResources与Realm"><span class="nav-number">7.2.</span> <span class="nav-text">GlobalNamingResources与Realm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valve"><span class="nav-number">7.3.</span> <span class="nav-text">Valve</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Soloist</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

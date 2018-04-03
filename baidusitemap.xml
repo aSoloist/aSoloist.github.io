@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.soloist.top/2018/04/03/Tomcat%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-04-03T18:56:36.394Z</lastmod>
+    <data>
+        <display>
+        <title>Tomcat 配置文件详解</title>
+        <pubTime>2018-04-03T11:03:00.000Z</pubTime>
+        
+        <tag>Tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.soloist.top/2018/01/28/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2018-02-28T16:51:17.738Z</lastmod>
     <data>
@@ -55,9 +75,9 @@
         <title>Ubuntu 将80端口请求转发到8080</title>
         <pubTime>2017-12-30T16:59:00.000Z</pubTime>
         
-        <tag>Ubuntu</tag>
-         
         <tag>Tomcat</tag>
+         
+        <tag>Ubuntu</tag>
          
         <tag>iptables</tag>
          
