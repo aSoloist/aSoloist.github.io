@@ -75,9 +75,9 @@
         <title>Ubuntu 将80端口请求转发到8080</title>
         <pubTime>2017-12-30T16:59:00.000Z</pubTime>
         
-        <tag>Tomcat</tag>
-         
         <tag>Ubuntu</tag>
+         
+        <tag>Tomcat</tag>
          
         <tag>iptables</tag>
          
