@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.soloist.top/"/>
-  <updated>2018-04-03T18:56:36.394Z</updated>
+  <updated>2018-04-03T19:41:14.654Z</updated>
   <id>http://www.soloist.top/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Fragment 学习总结</title>
+    <link href="http://www.soloist.top/2018/04/04/Android%20Fragment%20%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"/>
+    <id>http://www.soloist.top/2018/04/04/Android Fragment 学习总结/</id>
+    <published>2018-04-03T19:39:00.000Z</published>
+    <updated>2018-04-03T19:41:14.654Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://www.soloist.top/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://www.soloist.top/tags/Android/"/>
+    
+      <category term="Fragment" scheme="http://www.soloist.top/tags/Fragment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于注解形式的Spring AOP实现</title>
+    <link href="http://www.soloist.top/2018/04/04/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E5%BD%A2%E5%BC%8F%E7%9A%84Spring%20AOP%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://www.soloist.top/2018/04/04/基于注解形式的Spring AOP实现/</id>
+    <published>2018-04-03T19:35:00.000Z</published>
+    <updated>2018-04-03T19:38:54.390Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Spring MVC" scheme="http://www.soloist.top/categories/Spring-MVC/"/>
+    
+    
+      <category term="Java" scheme="http://www.soloist.top/tags/Java/"/>
+    
+      <category term="框架" scheme="http://www.soloist.top/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx 配置文件详解</title>
+    <link href="http://www.soloist.top/2018/04/04/Nginx%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://www.soloist.top/2018/04/04/Nginx 配置文件详解/</id>
+    <published>2018-04-03T19:34:00.000Z</published>
+    <updated>2018-04-03T19:36:59.801Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.soloist.top/categories/Linux/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.soloist.top/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>Tomcat 配置文件详解</title>
@@ -102,7 +160,7 @@
     <link href="http://www.soloist.top/2017/12/31/%E4%B8%80%E6%AC%A1%E5%A5%87%E6%80%AA%E7%9A%84debug/"/>
     <id>http://www.soloist.top/2017/12/31/一次奇怪的debug/</id>
     <published>2017-12-30T16:45:00.000Z</published>
-    <updated>2017-12-30T16:58:22.627Z</updated>
+    <updated>2018-04-03T19:38:28.093Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第一次在服务器Tomcat上用war包部署项目，但是在部署新的war包时出现了一个奇怪的bug，访问页面时，第一次打开会显示404页面，然后按F5刷新则会显示正常页面。</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>最初先清除了浏览器缓存，重新访问，并没有解决。</p><p>然后尝试了重新部署，仍没有解决问题。</p><p>ps:我部署的方式极其简单粗暴</p><ul><li><p>idea导出war包，用xshell传到服务器</p></li><li><p>stop Tomcat</p></li><li><p>删除Tomcat的webapps目录下之前的war包和文件夹</p></li><li><p>将war包拷贝到webapps目录下</p></li><li><p>start Tomcat</p></li></ul><p>后来查到一个办法，删除tomcat中work/Catalina目录下项目同名文件</p><p>不过我在目录下没找到同名文件，只有一个localhost（可能是我server.xml文件配置问题？）文件夹，删除之后，再访问，正常显示。</p>]]></content>
     
@@ -115,7 +173,7 @@
     
     </summary>
     
-      <category term="Tomcat" scheme="http://www.soloist.top/categories/Tomcat/"/>
+      <category term="Linux" scheme="http://www.soloist.top/categories/Linux/"/>
     
     
       <category term="Tomcat" scheme="http://www.soloist.top/tags/Tomcat/"/>
@@ -458,71 +516,6 @@ hexo init #初始化
     
     
       <category term="侃侃" scheme="http://www.soloist.top/tags/%E4%BE%83%E4%BE%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>First</title>
-    <link href="http://www.soloist.top/2017/06/29/First/"/>
-    <id>http://www.soloist.top/2017/06/29/First/</id>
-    <published>2017-06-29T12:34:10.000Z</published>
-    <updated>2017-07-10T16:44:54.077Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="第一篇文章"><a href="#第一篇文章" class="headerlink" title="第一篇文章"></a>第一篇文章</h2><p>从今天开始，咱也是有博客的人了，虽然目前能力低，没有什么有价值的文章哈哈哈哈哈哈哈哈哈哈哈</p><a id="more"></a><p>这个博客主要用来记录平时学习的心得体会，遇到的问题以及解决办法</p><p>虽然目前遇到的问题很简单，网上很容易找到答案。。。。。。。。</p><p>呃。。。。</p><p>也没啥要说的，希望这个博客能陪我到毕业甚至工作，也希望这个博客中能记录更多有价值的内容。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;第一篇文章&quot;&gt;&lt;a href=&quot;#第一篇文章&quot; class=&quot;headerlink&quot; title=&quot;第一篇文章&quot;&gt;&lt;/a&gt;第一篇文章&lt;/h2&gt;&lt;p&gt;从今天开始，咱也是有博客的人了，虽然目前能力低，没有什么有价值的文章哈哈哈哈哈哈哈哈哈哈哈&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="测试" scheme="http://www.soloist.top/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="侃侃" scheme="http://www.soloist.top/tags/%E4%BE%83%E4%BE%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FirstTest</title>
-    <link href="http://www.soloist.top/2017/06/29/FirstTest/"/>
-    <id>http://www.soloist.top/2017/06/29/FirstTest/</id>
-    <published>2017-06-29T11:53:39.000Z</published>
-    <updated>2017-09-16T13:42:24.996Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一篇测试用文章</p><p>第一次测试</p><p>第一次使用hexo搭建博客</p><a id="more"></a><p>#测试</p><p>这是一篇测试用文章</p><p>第一次测试</p><p>第一次使用hexo搭建博客</p><p>首次目标，上传至github，并成功。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是一篇测试用文章&lt;/p&gt;
-&lt;p&gt;第一次测试&lt;/p&gt;
-&lt;p&gt;第一次使用hexo搭建博客&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="测试" scheme="http://www.soloist.top/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://www.soloist.top/2017/06/29/hello-world/"/>
-    <id>http://www.soloist.top/2017/06/29/hello-world/</id>
-    <published>2017-06-29T11:25:19.250Z</published>
-    <updated>2017-09-05T14:35:48.562Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
     
   </entry>
   
