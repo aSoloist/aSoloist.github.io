@@ -102,7 +102,7 @@
 <meta property="og:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://owek6x58j.bkt.clouddn.com/078%257WA%7B%29Q%7BH%5DAZJ6LN_G0K.png">
-<meta property="og:updated_time" content="2018-04-03T18:56:36.394Z">
+<meta property="og:updated_time" content="2018-04-12T10:39:33.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 配置文件详解">
 <meta name="twitter:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
@@ -457,7 +457,7 @@
 <li><p>扫描虚拟主机指定的appBase下的应用目录。</p>
 </li>
 </ol>
-<p><strong>\<context>元素的配置</context></strong></p>
+<p><strong>Context 元素的配置</strong></p>
 <p>Context 元素最重要的属性是 docBase 和 path ，此外 reloadable 属性也比较常用。</p>
 <p>docBase 指定了该 WEB 应用使用的 WAR 包路径，或应用目录，需要注意的是，在自动部署场景下（配置文件位于xmlBase中），docBase不在appBase目录中，才需要指定；如果 docBase 指定的 WAR 包或应用目录就在 appBase 中，则不需要指定，因为 Tomcat 会自动扫描appBase中的WAR包和应用目录，指定了反而会造成问题。</p>
 <p>path 指定了访问该 WEB 应用的上下文路径，当请求到来时， Tomcat 根据 WEB 应用的 path 属性与 URI 的匹配程度来选择 WEB 应用处理相应请求。例如， WEB 应用 app1 的 path 属性是 “/app1”， WEB 应用 app2 的 path 属性是 “/app2”，那么请求/app/index.html会交给app1来处理，而请求/app2/index.html会交给app2来处理。如果一个Context元素的path属性为””，那么这个Context是虚拟主机的默认WEB应用；当请求的url与所有的path都不匹配时，使用该默认WEB应用来处理。</p>

@@ -4,6 +4,68 @@
 
     
   <url>
+    <loc>http://www.soloist.top/2018/04/04/Nginx%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-04-12T19:18:50.329Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx 配置文件详解</title>
+        <pubTime>2018-04-03T19:34:00.000Z</pubTime>
+        
+        <tag>Nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.soloist.top/2017/09/27/idea%20%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2018-04-12T10:41:39.723Z</lastmod>
+    <data>
+        <display>
+        <title>idea 常用快捷键及插件</title>
+        <pubTime>2017-09-27T12:53:00.000Z</pubTime>
+        
+        <tag>idea</tag>
+         
+        <tag>插件</tag>
+         
+         
+           
+             
+              <breadCrumb title="常用命令" url="http://www.soloist.top/categories/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.soloist.top/2018/04/03/Tomcat%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-04-12T10:39:33.687Z</lastmod>
+    <data>
+        <display>
+        <title>Tomcat 配置文件详解</title>
+        <pubTime>2018-04-03T11:03:00.000Z</pubTime>
+        
+        <tag>Tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.soloist.top/2018/04/04/Android%20Fragment%20%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2018-04-03T19:41:14.654Z</lastmod>
     <data>
@@ -70,46 +132,6 @@
 
     
   <url>
-    <loc>http://www.soloist.top/2018/04/04/Nginx%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-04-03T19:36:59.801Z</lastmod>
-    <data>
-        <display>
-        <title>Nginx 配置文件详解</title>
-        <pubTime>2018-04-03T19:34:00.000Z</pubTime>
-        
-        <tag>Nginx</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.soloist.top/2018/04/03/Tomcat%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-04-03T18:56:36.394Z</lastmod>
-    <data>
-        <display>
-        <title>Tomcat 配置文件详解</title>
-        <pubTime>2018-04-03T11:03:00.000Z</pubTime>
-        
-        <tag>Tomcat</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.soloist.top/2018/01/28/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2018-02-28T16:51:17.738Z</lastmod>
     <data>
@@ -161,9 +183,9 @@
         <title>Ubuntu 将80端口请求转发到8080</title>
         <pubTime>2017-12-30T16:59:00.000Z</pubTime>
         
-        <tag>Ubuntu</tag>
-         
         <tag>Tomcat</tag>
+         
+        <tag>Ubuntu</tag>
          
         <tag>iptables</tag>
          
@@ -233,28 +255,6 @@
            
              
               <breadCrumb title="Java" url="http://www.soloist.top/categories/Java/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.soloist.top/2017/09/27/idea%20%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E6%8F%92%E4%BB%B6/</loc>
-    <lastmod>2017-09-29T12:08:24.451Z</lastmod>
-    <data>
-        <display>
-        <title>idea 常用快捷键及插件</title>
-        <pubTime>2017-09-27T12:53:00.000Z</pubTime>
-        
-        <tag>idea</tag>
-         
-        <tag>插件</tag>
-         
-         
-           
-             
-              <breadCrumb title="常用命令" url="http://www.soloist.top/categories/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
           
         </display>
     </data>
