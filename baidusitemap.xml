@@ -4,12 +4,78 @@
 
     
   <url>
+    <loc>http://www.soloist.top/2018/04/17/Mybatis%20Generator%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-04-17T04:21:58.362Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis Generator完整配置详解</title>
+        <pubTime>2018-04-17T04:18:00.000Z</pubTime>
+        
+        <tag>Mybatis Generator</tag>
+         
+        <tag>框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mybatis" url="http://www.soloist.top/categories/Mybatis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.soloist.top/2018/03/14/Python%20requests%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2018-04-14T04:53:56.375Z</lastmod>
+    <data>
+        <display>
+        <title>Python requests库的使用</title>
+        <pubTime>2018-03-14T04:49:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>requests</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.soloist.top/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.soloist.top/2017/08/14/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E5%BD%A2%E5%BC%8F%E7%9A%84Spring%20AOP%E5%AE%9E%E7%8E%B0/</loc>
+    <lastmod>2018-04-14T04:49:23.850Z</lastmod>
+    <data>
+        <display>
+        <title>基于注解形式的Spring AOP实现</title>
+        <pubTime>2017-08-14T05:35:00.000Z</pubTime>
+        
+        <tag>框架</tag>
+         
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring MVC" url="http://www.soloist.top/categories/Spring-MVC/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.soloist.top/2018/04/04/Nginx%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-04-14T03:29:53.156Z</lastmod>
+    <lastmod>2018-04-14T04:48:53.790Z</lastmod>
     <data>
         <display>
         <title>Nginx 配置文件详解</title>
-        <pubTime>2018-04-03T19:34:00.000Z</pubTime>
+        <pubTime>2018-04-04T11:34:00.000Z</pubTime>
         
         <tag>Nginx</tag>
          
@@ -17,6 +83,28 @@
            
              
               <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.soloist.top/2018/04/02/Android%20Fragment%20%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2018-04-14T04:48:53.710Z</lastmod>
+    <data>
+        <display>
+        <title>Android Fragment 学习总结</title>
+        <pubTime>2018-04-02T10:39:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Fragment</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://www.soloist.top/categories/Android/"/>
           
         </display>
     </data>
@@ -59,50 +147,6 @@
            
              
               <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.soloist.top/2018/04/04/Android%20Fragment%20%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2018-04-03T19:41:14.654Z</lastmod>
-    <data>
-        <display>
-        <title>Android Fragment 学习总结</title>
-        <pubTime>2018-04-03T19:39:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Fragment</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://www.soloist.top/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.soloist.top/2018/04/04/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E5%BD%A2%E5%BC%8F%E7%9A%84Spring%20AOP%E5%AE%9E%E7%8E%B0/</loc>
-    <lastmod>2018-04-03T19:38:54.390Z</lastmod>
-    <data>
-        <display>
-        <title>基于注解形式的Spring AOP实现</title>
-        <pubTime>2018-04-03T19:35:00.000Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>框架</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spring MVC" url="http://www.soloist.top/categories/Spring-MVC/"/>
           
         </display>
     </data>
@@ -183,9 +227,9 @@
         <title>Ubuntu 将80端口请求转发到8080</title>
         <pubTime>2017-12-30T16:59:00.000Z</pubTime>
         
-        <tag>Tomcat</tag>
-         
         <tag>Ubuntu</tag>
+         
+        <tag>Tomcat</tag>
          
         <tag>iptables</tag>
          
@@ -348,9 +392,9 @@
         <title>Spring MVC 配置及常用注解</title>
         <pubTime>2017-09-09T16:00:00.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>框架</tag>
+         
+        <tag>Java</tag>
          
          
            
