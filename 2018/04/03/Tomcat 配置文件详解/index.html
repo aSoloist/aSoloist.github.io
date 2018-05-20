@@ -102,7 +102,7 @@
 <meta property="og:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://owek6x58j.bkt.clouddn.com/078%257WA%7B%29Q%7BH%5DAZJ6LN_G0K.png">
-<meta property="og:updated_time" content="2018-05-20T10:40:07.926Z">
+<meta property="og:updated_time" content="2018-05-20T10:43:26.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 配置文件详解">
 <meta name="twitter:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
@@ -480,13 +480,13 @@
 <p><strong>通过在Server中配置多个Service，可以实现通过不同的端口号来访问同一台机器上的不同应用。</strong></p>
 <h4 id="根据域名或IP地址选定Host"><a href="#根据域名或IP地址选定Host" class="headerlink" title="根据域名或IP地址选定Host"></a>根据域名或IP地址选定Host</h4><p>Service确定后，Tomcat在Service中寻找名称与域名/IP地址匹配的Host处理该请求，如果没有找到，则使用Engine中指定defaultHost来处理该请求。因为上面的配置文件只有一个Host，因此该Service/Engine的所有请求都交给该Host处理。</p>
 <h4 id="根据URI选定Context-WEB应用"><a href="#根据URI选定Context-WEB应用" class="headerlink" title="根据URI选定Context/WEB应用"></a>根据URI选定Context/WEB应用</h4><p>这点在Context中有介绍。</p>
-<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p>以请求<a href="http://localhost:8080/examples/index.html为例，首先通过协议和端口号（HTTP和8080）选定Service，然后通过主机名（localhost）选定Host，然后通过URI（/examples/index.html）选定WEB应用" target="_blank" rel="external">http://localhost:8080/examples/index.html为例，首先通过协议和端口号（HTTP和8080）选定Service，然后通过主机名（localhost）选定Host，然后通过URI（/examples/index.html）选定WEB应用</a></p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p>以请求<code>http://localhost:8080/examples/index.html</code>为例，首先通过协议和端口号（HTTP和8080）选定Service，然后通过主机名（localhost）选定Host，然后通过URI（/examples/index.html）选定WEB应用</p>
 <h3 id="如何配置多个服务？"><a href="#如何配置多个服务？" class="headerlink" title="如何配置多个服务？"></a>如何配置多个服务？</h3><p>通过在Server中配置多个Service服务，可以实现通过不同的端口号来访问同一台机器上部署的不同应用。</p>
 <p>在server.xml中配置多服务的方法很简单：</p>
 <ol>
-<li><p>复制\<service>，放在当前\<service>后面。</service></service></p>
+<li><p>复制<service>，放在当前<service>后面。</service></service></p>
 </li>
-<li><p>修改端口号：根据需要监听的端口号修改\<connector>元素的port属性，必须保证该端口没有被其他进程占用，否则将会出错。</connector></p>
+<li><p>修改端口号：根据需要监听的端口号修改<connector>元素的port属性，必须保证该端口没有被其他进程占用，否则将会出错。</connector></p>
 </li>
 <li><p>修改Service和Engine的name属性</p>
 </li>
