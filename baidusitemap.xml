@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.soloist.top/2018/04/03/Tomcat%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2018-05-20T10:40:07.926Z</lastmod>
+    <data>
+        <display>
+        <title>Tomcat 配置文件详解</title>
+        <pubTime>2018-04-03T11:03:00.000Z</pubTime>
+        
+        <tag>Tomcat</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.soloist.top/2018/04/17/Mybatis%20Example%20%E7%94%A8%E6%B3%95/</loc>
     <lastmod>2018-04-17T07:08:52.233Z</lastmod>
     <data>
@@ -77,9 +97,9 @@
         <title>基于注解形式的Spring AOP实现</title>
         <pubTime>2017-08-14T05:35:00.000Z</pubTime>
         
-        <tag>框架</tag>
-         
         <tag>Java</tag>
+         
+        <tag>框架</tag>
          
          
            
@@ -149,26 +169,6 @@
            
              
               <breadCrumb title="常用命令" url="http://www.soloist.top/categories/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.soloist.top/2018/04/03/Tomcat%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2018-04-12T10:39:33.687Z</lastmod>
-    <data>
-        <display>
-        <title>Tomcat 配置文件详解</title>
-        <pubTime>2018-04-03T11:03:00.000Z</pubTime>
-        
-        <tag>Tomcat</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.soloist.top/categories/Linux/"/>
           
         </display>
     </data>
@@ -249,9 +249,9 @@
         <title>Ubuntu 将80端口请求转发到8080</title>
         <pubTime>2017-12-30T16:59:00.000Z</pubTime>
         
-        <tag>Ubuntu</tag>
-         
         <tag>Tomcat</tag>
+         
+        <tag>Ubuntu</tag>
          
         <tag>iptables</tag>
          
@@ -414,9 +414,9 @@
         <title>Spring MVC 配置及常用注解</title>
         <pubTime>2017-09-09T16:00:00.000Z</pubTime>
         
-        <tag>框架</tag>
-         
         <tag>Java</tag>
+         
+        <tag>框架</tag>
          
          
            

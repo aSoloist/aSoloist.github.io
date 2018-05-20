@@ -102,7 +102,7 @@
 <meta property="og:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://owek6x58j.bkt.clouddn.com/078%257WA%7B%29Q%7BH%5DAZJ6LN_G0K.png">
-<meta property="og:updated_time" content="2018-04-12T10:39:33.687Z">
+<meta property="og:updated_time" content="2018-05-20T10:40:07.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tomcat 配置文件详解">
 <meta name="twitter:description" content="前言Tomcat隶属于Apache基金会，是开源的轻量级WEB应用服务器，使用非常广泛。server.xml是Tomcat中最重要的配置文件，server.xml的每一个元素都对应了Tomcat中的一个组件；通过对xml文件中元素的配置，可以实现对Tomcat中各个组件的控制。 故搜索一些server.xml配置文件的详解，留以备用。 tomcat 自带的 server.xml 文件server.">
@@ -466,7 +466,7 @@
 <p><strong>自动部署举例</strong></p>
 <p>最典型的自动部署，就是当我们安装完Tomcat后，WEBapps目录下有如下文件夹：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- docs</div><div class="line">- example</div><div class="line">- host-manager</div><div class="line">- manager</div><div class="line">- ROOT</div></pre></td></tr></table></figure>
-<p>当我们启动Tomcat后，可以使用<a href="http://localhost:8080/来访问Tomcat，其实访问的就是ROOT对应的WEB应用；我们也可以通过http://localhost:8080/docs来访问docs应用，其他同理。" target="_blank" rel="external">http://localhost:8080/来访问Tomcat，其实访问的就是ROOT对应的WEB应用；我们也可以通过http://localhost:8080/docs来访问docs应用，其他同理。</a></p>
+<p>当我们启动Tomcat后，可以使用<code>http://localhost:8080/</code>来访问Tomcat，其实访问的就是ROOT对应的WEB应用；我们也可以通过<code>http://localhost:8080/docs</code>来访问docs应用，其他同理。</p>
 <h4 id="server-xml中静态部署WEB应用"><a href="#server-xml中静态部署WEB应用" class="headerlink" title="server.xml中静态部署WEB应用"></a>server.xml中静态部署WEB应用</h4><p>除了自动部署，我们也可以在server，xml中通过<context>元素静态部署WEB应用。静态部署和动态部署是可以共存的，在实际应用中，并不推荐使用静态部署，因为server.xml是不可动态加载的资源，服务器一旦启动了以后，要修改这个文件，只有重启服务器才能加载。而自动部署可以在Tomcat运行时通过定期的扫描来实现，不需要重启服务器。</context></p>
 <p>server.xml中使用Context元素配置WEB应用，Context元素应该位于Host元素中</p>
 <p>docBase：静态部署时，docBase可以在appBase目录下，也可以不在。</p>
