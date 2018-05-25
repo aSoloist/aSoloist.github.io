@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.soloist.top/2018/03/14/Python%20requests%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2018-05-25T16:25:31.700Z</lastmod>
+    <data>
+        <display>
+        <title>Python requests库的使用</title>
+        <pubTime>2018-03-14T04:49:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>requests</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.soloist.top/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.soloist.top/2018/01/28/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2018-05-23T16:25:26.013Z</lastmod>
     <data>
@@ -83,28 +105,6 @@
            
              
               <breadCrumb title="Mybatis" url="http://www.soloist.top/categories/Mybatis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.soloist.top/2018/03/14/Python%20requests%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2018-04-14T04:53:56.375Z</lastmod>
-    <data>
-        <display>
-        <title>Python requests库的使用</title>
-        <pubTime>2018-03-14T04:49:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>requests</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://www.soloist.top/categories/Python/"/>
           
         </display>
     </data>
